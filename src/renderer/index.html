@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FreeTerm</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@xterm/xterm@5.3.0/css/xterm.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body class="bg-gray-900 text-white h-screen flex flex-col">
+    <!-- Header/Toolbar -->
+    <header class="bg-gray-800 border-b border-gray-700 p-2 flex items-center">
+        <div class="flex items-center space-x-2">
+            <i class="fas fa-terminal text-blue-400"></i>
+            <h1 class="text-xl font-semibold">FreeTerm</h1>
+        </div>
+        
+        <!-- Tab Bar -->
+        <div class="flex-1 ml-6 flex items-center space-x-2" id="terminal-tabs">
+            <button class="px-4 py-1 bg-gray-700 rounded-md hover:bg-gray-600 active:bg-gray-500 transition-colors">
+                Terminal 1
+            </button>
+            <button class="px-3 py-1 bg-gray-700 rounded-md hover:bg-gray-600 transition-colors" id="new-tab">
+                <i class="fas fa-plus"></i>
+            </button>
+        </div>
+
+        <!-- Window Controls -->
+        <div class="flex items-center space-x-2">
+            <button class="p-2 hover:bg-gray-700 rounded-md transition-colors">
+                <i class="fas fa-cog"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="flex-1 flex">
+        <!-- Sidebar -->
+        <div class="w-64 bg-gray-800 border-r border-gray-700 flex flex-col">
+            <!-- History Section -->
+            <div class="p-4">
+                <h2 class="text-sm font-semibold text-gray-400 mb-2">COMMAND HISTORY</h2>
+                <div class="space-y-2" id="command-history">
+                    <!-- History items will be added here -->
+                </div>
+            </div>
+            
+            <!-- Favorites Section -->
+            <div class="p-4 border-t border-gray-700">
+                <h2 class="text-sm font-semibold text-gray-400 mb-2">FAVORITES</h2>
+                <div class="space-y-2" id="favorites">
+                    <!-- Favorite commands will be added here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Terminal Container -->
+        <div class="flex-1 bg-gray-900" id="terminal-container"></div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@xterm/xterm@5.3.0/lib/xterm.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@xterm/addon-fit@0.9.0/lib/addon-fit.js"></script>
+    <script src="./renderer.js" type="module"></script>
+</body>
+</html>
